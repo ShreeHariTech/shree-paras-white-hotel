@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Paras White Hotel - Luxury Stay in Amreli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B5E3C;
+            --secondary: #D4A977;
+            --accent: #4A3728;
+            --light: #F8F5F2;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .nav-link {
+            color: var(--accent);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        .hero {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* Full viewport height */
+        background: url('img/1.jpeg') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-align: center;
+    }
+    /* Overlay with low opacity */
+    .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.25); /* opacity adjust here */
+        backdrop-filter: blur(1px);
+    }
+    .hero .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .amenity-card {
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            margin-bottom: 2rem;
+        }
+        .amenity-card:hover {
+            transform: translateY(-5px);
+        }
+        .amenity-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .gallery-item {
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        .gallery-item img {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .booking-form {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .contact-info {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        .footer {
+            background: var(--accent);
+            color: white;
+            padding: 3rem 0;
+        }
+        .fixed-img-box {
+        width: 100%;
+        height: 450px; /* ✅ Change height as you want */
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .fixed-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: fit; /* ✅ fits image perfectly */
+    }
+
+    /* ===== Scroll Animations ===== */
+.fade-up, .fade-right, .fade-left {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.9s ease-out;
+}
+
+.fade-right {
+    transform: translateX(-40px);
+}
+
+.fade-left {
+    transform: translateX(40px);
+}
+
+/* When element becomes visible */
+.show {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+
+    @media(max-width: 768px) {
+        .fixed-img-box {
+            height: 250px; /* mobile size */
+        }
+    }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translate3d(0, 12px, 0);
+            transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                        opacity 700ms ease;
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: opacity, transform;
+        }
+        .reveal-up { transform: translate3d(0, 16px, 0); }
+        .reveal-left { transform: translate3d(-16px, 0, 0); }
+        .reveal-right { transform: translate3d(16px, 0, 0); }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+        @media (max-width: 768px) {
+            .reveal-up { transform: translate3d(0, 12px, 0); }
+            .reveal-left { transform: translate3d(-12px, 0, 0); }
+            .reveal-right { transform: translate3d(12px, 0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal,
+            .reveal-up,
+            .reveal-left,
+            .reveal-right {
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Shree Paras White Hotel</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#amenities">Amenities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#booking">Book Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="reveal reveal-up" style="--reveal-delay: 0ms">Welcome to Luxury & Comfort</h1>
+            <p class="reveal reveal-up" style="--reveal-delay: 120ms">Experience the perfect blend of modern amenities and traditional hospitality</p>
+            <a href="#booking" class="btn btn-primary btn-lg reveal reveal-up" style="--reveal-delay: 240ms">Book Your Stay</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">About Our Hotel</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="fixed-img-box reveal reveal-right">
+                        <img src="img/2.jpeg" alt="Hotel Room" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal reveal-left">
+                    <h3>Double Bed AC Room</h3>
+                    <p>Experience luxury and comfort in our well-appointed double bed AC rooms. Each room is designed to provide you with the perfect blend of modern amenities and comfortable living space.</p>
+                    <p>Our rooms feature contemporary furnishings, premium bedding, and all the essential amenities to make your stay memorable.</p>
+                    <div class="mt-4">
+                        <p><i class="fas fa-phone me-2"></i>Mob: 9998960452, 9998960453</p>
+                        <p><i class="fas fa-phone-alt me-2"></i>Landline: 02792-221242</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="section bg-light" id="amenities">
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">Our Amenities</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="amenity-card reveal reveal-up">
+                        <i class="fas fa-snowflake amenity-icon"></i>
+                        <h4>Air Conditioning</h4>
+                        <p>Stay cool and comfortable</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="amenity-card reveal reveal-up">
+                        <i class="fas fa-wifi amenity-icon"></i>
+                        <h4>Free Wi-Fi</h4>
+                        <p>Stay connected always</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="amenity-card reveal reveal-up">
+                        <i class="fas fa-parking amenity-icon"></i>
+                        <h4>Parking</h4>
+                        <p>Secure parking facility</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="amenity-card reveal reveal-up">
+                        <i class="fas fa-concierge-bell amenity-icon"></i>
+                        <h4>24/7 Front Desk</h4>
+                        <p>Round-the-clock service</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="amenity-card reveal reveal-up">
+                        <i class="fas fa-tshirt amenity-icon"></i>
+                        <h4>Laundry Service</h4>
+                        <p>Full-service laundry</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="amenity-card reveal reveal-up">
+                        <i class="fas fa-utensils amenity-icon"></i>
+                        <h4>Room Service</h4>
+                        <p>In-room dining available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nearby Attractions Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">Nearby Attractions</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 reveal reveal-up">
+                        <div class="card-body">
+                            <h5 class="card-title">Sasan Gir Forest</h5>
+                            <p class="card-text">82km away</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 reveal reveal-up">
+                        <div class="card-body">
+                            <h5 class="card-title">Somnath Temple</h5>
+                            <p class="card-text">140km away</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 reveal reveal-up">
+                        <div class="card-body">
+                            <h5 class="card-title">Palitana Jain Derasar</h5>
+                            <p class="card-text">77km away</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 reveal reveal-up">
+                        <div class="card-body">
+                            <h5 class="card-title">Diu</h5>
+                            <p class="card-text">120km away</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 reveal reveal-up">
+                        <div class="card-body">
+                            <h5 class="card-title">Pipavav Port</h5>
+                            <p class="card-text">95km away</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 reveal reveal-up">
+                        <div class="card-body">
+                            <h5 class="card-title">Dhari Khodiyar Dam</h5>
+                            <p class="card-text">45km away</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section bg-light" id="gallery">
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">Gallery</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="gallery-item reveal reveal-up" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://via.placeholder.com/400">
+                        <img src="img/3.jpeg" alt="Hotel Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item reveal reveal-up" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://via.placeholder.com/400">
+                        <img src="img/4.jpeg" alt="Hotel Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item reveal reveal-up" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://via.placeholder.com/400">
+                        <img src="img/5.jpeg" alt="Hotel Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item reveal reveal-up" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://via.placeholder.com/400">
+                        <img src="img/6.jpeg" alt="Hotel Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item reveal reveal-up" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://via.placeholder.com/400">
+                        <img src="img/7.jpeg" alt="Hotel Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="gallery-item reveal reveal-up" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://via.placeholder.com/400">
+                        <img src="img/8.jpeg" alt="Hotel Image" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div class="modal fade" id="galleryModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <img src="" alt="Hotel Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Section -->
+    <section class="section" id="booking">
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">Book Your Stay</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form class="booking-form reveal reveal-up" id="bookingForm">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Mobile</label>
+                            <input type="tel" class="form-control" id="mobile" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Check-in Date & Time</label>
+                                <input type="datetime-local" class="form-control" id="checkin" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Check-out Date & Time</label>
+                                <input type="datetime-local" class="form-control" id="checkout" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Book Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title reveal reveal-up">Location</h2>
+            <div class="ratio ratio-16x9 reveal reveal-up">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3709.5413977062176!2d71.22092367345438!3d21.603817167782932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395881003d7f80d7%3A0xaa82a87fe9c657d0!2sShree%20Paras%20WHITE%20Hotel!5e0!3m2!1sen!2sin!4v1762098810680!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">Redirecting to WhatsApp...</div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone me-2"></i>Mob: 9998960452, 9998960453</p>
+                    <p><i class="fas fa-phone-alt me-2"></i>Landline: 02792-221242</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Bus Stand, opp. S.T, D.L.B. Society, Amreli, Gujarat 365601</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h4>Quick Links</h4>
+                    <p><a href="#home" class="text-white text-decoration-none">Home</a></p>
+                    <p><a href="#about" class="text-white text-decoration-none">About</a></p>
+                    <p><a href="#booking" class="text-white text-decoration-none">Book Now</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Gallery Modal
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const image = this.getAttribute('data-image');
+                document.querySelector('#galleryModal img').src = image;
+            });
+        });
+
+        // Booking Form
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const mobile = document.getElementById('mobile').value;
+            const checkin = new Date(document.getElementById('checkin').value);
+            const checkout = new Date(document.getElementById('checkout').value);
+
+            // Format dates
+            const formatDate = (date) => {
+                return date.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            };
+
+            // Compose message
+            const message = `Booking Request:\n\nName: ${name}\nMobile: ${mobile}\nCheck-in: ${formatDate(checkin)}\nCheck-out: ${formatDate(checkout)}`;
+
+            // Show toast
+            const toast = new bootstrap.Toast(document.querySelector('.toast'));
+            toast.show();
+
+            // Open WhatsApp
+            setTimeout(() => {
+                const whatsappUrl = `https://wa.me/919998960453?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+            }, 1500);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    
+    // Intersection Observer: reveal animations
+    (function() {
+        const options = {
+            root: null,
+            rootMargin: '0px 0px -10% 0px', // reveal slightly before fully in view
+            threshold: 0.12
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // one-time reveal for premium feel
+                }
+            });
+        }, options);
+
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach((el, i) => {
+            // Gentle default stagger if none provided
+            const hasCustomDelay = !!el.style.getPropertyValue('--reveal-delay');
+            if (!hasCustomDelay) {
+                el.style.setProperty('--reveal-delay', `${Math.min(i * 80, 320)}ms`);
+            }
+            observer.observe(el);
+        });
+    })();
+</script>
+</body>
+</html>
