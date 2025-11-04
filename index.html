@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
     <title>Shree Paras White Hotel - Luxury Stay in Amreli</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -326,7 +327,11 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Shree Paras White Hotel</a>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/logo.png" alt="Logo" 
+                 style="height:40px; width:auto; margin-right:10px;">
+            Shree Paras White Hotel
+        </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -344,13 +349,25 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
-            <h1 class="reveal reveal-up" style="--reveal-delay: 0ms">Welcome to Luxury & Comfort</h1>
-            <p class="reveal reveal-up" style="--reveal-delay: 120ms">Experience the perfect blend of modern amenities and traditional hospitality</p>
-            <a href="#booking" class="btn btn-primary btn-lg reveal reveal-up" style="--reveal-delay: 240ms">Book Your Stay</a>
-        </div>
-    </section>
+    <div class="container">
+        <h1 class="reveal reveal-up" style="--reveal-delay: 0ms">
+            Welcome to Luxury & Comfort
+        </h1>
 
+        <p class="reveal reveal-up" style="--reveal-delay: 120ms">
+            Experience the perfect blend of modern amenities and traditional hospitality
+        </p>
+
+        <!-- ✅ Added New Line -->
+        <p class="reveal reveal-up" style="--reveal-delay: 200ms; font-size:1.3rem; font-weight:500;">
+            <em>We never forget how important you are</em>
+        </p>
+
+        <a href="#booking" class="btn btn-primary btn-lg reveal reveal-up" style="--reveal-delay: 280ms">
+            Book Your Stay
+        </a>
+    </div>
+</section>
     <!-- About Section -->
     <section class="section" id="about">
         <div class="container">
@@ -434,6 +451,56 @@
             </div>
         </div>
     </section>
+
+    <section class="section bg-light" id="aboutus">
+    <div class="container">
+        <h2 class="section-title reveal reveal-up">About Us</h2>
+
+        <div class="row align-items-center g-4 g-lg-5">
+
+            <!-- Left Image -->
+            <div class="col-lg-6">
+                <div class="about-media reveal reveal-right" style="border-radius:14px; overflow:hidden;">
+                    <img src="img/9.jpeg" alt="About Hotel" class="img-fluid">
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="col-lg-6">
+                <div class="about-content reveal reveal-left" style="
+                    background: rgba(248, 245, 242, 0.9);
+                    border: 1px solid rgba(139, 94, 60, 0.2);
+                    padding: 28px;
+                    border-radius: 14px;
+                    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+                ">
+                    <h3 class="mb-3" style="color: var(--accent);">Who We Are</h3>
+
+                    <p class="lead mb-3">
+                        We are proudly serving guests in <strong>Amreli, Gujarat</strong> since <strong>1997</strong>.
+                    </p>
+
+                    <p class="mb-3">
+                        Our journey began with a simple vision — to offer warm hospitality, comfortable living,
+                        and a memorable stay experience to every visitor who walks through our doors.
+                    </p>
+
+                    <!-- ✅ Special trusted line -->
+                    <p class="fw-semibold mb-4" style="color: var(--primary); font-size:1.2rem;">
+                        <em>“Since 1997, winning your trust.”</em>
+                    </p>
+
+                    <p>
+                        With years of dedication, quality service, and constant improvement, we are proud to be
+                        one of the most trusted and preferred stay options in the region.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 
     <!-- Nearby Attractions Section -->
     <section class="section">
@@ -615,6 +682,14 @@
                     Landline:
                     <strong>
                         <a href="tel:02792221242" class="text-white text-decoration-none">02792-221242</a>
+                    </strong>
+                </p>
+
+                <p class="mb-2">
+                    <i class="fas fa-envelope me-2 text-white"></i>
+                    Email:
+                    <strong>
+                        <a href="mailto:shreeparaswhitehotel2755@gmail.com" class="text-white text-decoration-none">shreeparaswhitehotel2755@gmail.com</a>
                     </strong>
                 </p>
 
